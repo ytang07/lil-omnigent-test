@@ -74,6 +74,13 @@ export function buildGenerationPrompt(brief) {
   return `Write a ${brief.length}-word blog post about "${brief.topic}" for ${brief.audience}. Use a ${brief.tone} voice. Writing style: ${style.label}. ${style.prompt}`;
 }
 
+export function createGenerationRequest(brief) {
+  const style = WRITING_STYLES[brief.style] ? brief.style : 'serious';
+  const request = { ...brief, style };
+
+  return { ...request, prompt: buildGenerationPrompt(request) };
+}
+
 export function createOutline(brief) {
   const title = titleCase(brief.topic);
   const style = getWritingStyle(brief.style);

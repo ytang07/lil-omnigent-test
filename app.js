@@ -1,4 +1,4 @@
-import { createDraft, createOutline } from './blog-generator.js';
+import { createDraft, createGenerationRequest, createOutline } from './blog-generator.js';
 
 const briefForm = document.querySelector('#briefForm');
 const topicInput = document.querySelector('#topic');
@@ -39,13 +39,13 @@ function renderOutline() {
 
 briefForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  brief = {
+  brief = createGenerationRequest({
     topic: topicInput.value,
     audience: audienceInput.value,
     tone: toneInput.value,
     style: styleInput.value,
     length: lengthInput.value,
-  };
+  });
   outline = createOutline(brief);
   renderOutline();
   outlinePanel.classList.remove('is-hidden');

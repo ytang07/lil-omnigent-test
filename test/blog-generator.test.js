@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { WRITING_STYLES, buildGenerationPrompt, createDraft, createOutline } from '../blog-generator.js';
+import { WRITING_STYLES, createDraft, createGenerationRequest, createOutline } from '../blog-generator.js';
 
 const baseBrief = {
   topic: 'protecting uninterrupted time',
@@ -19,7 +19,10 @@ test('carries the selected funny style into the generation prompt and content', 
   const outline = createOutline(brief);
   const draft = createDraft(brief, outline);
 
-  assert.match(buildGenerationPrompt(brief), /Writing style: Funny/);
+  const request = createGenerationRequest(brief);
+
+  assert.equal(request.style, 'funny');
+  assert.match(request.prompt, /Writing style: Funny/);
   assert.match(outline.thesis, /honest humor/);
   assert.match(draft, /extra meeting that could have been an email/);
   assert.match(draft, /Start with the familiar mess/);
