@@ -62,6 +62,14 @@
                   <option>Provocative and direct</option>
                 </select>
               </label>
+              <label>
+                <span>Writing style</span>
+                <select id="style">
+                  <option value="funny">Funny</option>
+                  <option value="serious" selected>Serious</option>
+                  <option value="persuasive">Persuasive</option>
+                </select>
+              </label>
             </div>
             <label class="slider-field">
               <span>Target length <output id="lengthValue">700 words</output></span>
@@ -105,6 +113,6 @@
     </main>
 
     <footer>Draftly is a local prototype. Your work stays in this browser.</footer>
-    <script src="./app.js"></script>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>
