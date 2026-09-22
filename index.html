@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draftly — Blog Writer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Draftly home">Draftly<span>.</span></a>
+        <p class="eyebrow">A focused writing workspace</p>
+      </header>
+
+      <section class="hero" id="top">
+        <p class="kicker">Your next great post starts here</p>
+        <h1>Find the angle.<br /><em>Shape the story.</em></h1>
+        <p class="intro">Start with a simple brief. Refine an outline you believe in, then turn it into a clear first draft.</p>
+      </section>
+
+      <section class="workspace" aria-label="Blog post builder">
+        <div class="stepper" aria-label="Writing progress">
+          <span class="step active" data-step="1"><b>01</b> Brief</span>
+          <span class="step" data-step="2"><b>02</b> Outline</span>
+          <span class="step" data-step="3"><b>03</b> Draft</span>
+        </div>
+
+        <section class="panel brief-panel" id="briefPanel">
+          <div class="panel-heading">
+            <p class="section-label">The brief</p>
+            <p>Give the draft a strong point of view.</p>
+          </div>
+          <form id="briefForm">
+            <label class="topic-field">
+              <span>What do you want to write about?</span>
+              <textarea id="topic" required maxlength="180" placeholder="e.g. Why small teams should protect uninterrupted time" autofocus></textarea>
+            </label>
+            <div class="field-grid">
+              <label>
+                <span>For whom?</span>
+                <select id="audience">
+                  <option>Founders and leaders</option>
+                  <option>Marketing teams</option>
+                  <option>Independent creators</option>
+                  <option>Product teams</option>
+                  <option>General readers</option>
+                </select>
+              </label>
+              <label>
+                <span>Voice</span>
+                <select id="tone">
+                  <option>Clear and thoughtful</option>
+                  <option>Confident and practical</option>
+                  <option>Warm and conversational</option>
+                  <option>Provocative and direct</option>
+                </select>
+              </label>
+            </div>
+            <label class="slider-field">
+              <span>Target length <output id="lengthValue">700 words</output></span>
+              <input id="length" type="range" min="400" max="1200" value="700" step="100" />
+            </label>
+            <button class="primary-button" type="submit">Create an outline <span>→</span></button>
+          </form>
+        </section>
+
+        <section class="panel result-panel is-hidden" id="outlinePanel" aria-live="polite">
+          <div class="result-heading">
+            <div>
+              <p class="section-label">The outline</p>
+              <h2 id="outlineTitle"></h2>
+            </div>
+            <button class="quiet-button" id="editBrief" type="button">Edit brief</button>
+          </div>
+          <div class="thesis" id="thesis"></div>
+          <div class="outline-list" id="outlineList"></div>
+          <div class="result-actions">
+            <button class="secondary-button" id="refreshOutline" type="button">Try another angle</button>
+            <button class="primary-button" id="generateDraft" type="button">Write the first draft <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="panel result-panel is-hidden" id="draftPanel" aria-live="polite">
+          <div class="result-heading">
+            <div>
+              <p class="section-label">First draft</p>
+              <h2 id="draftTitle"></h2>
+            </div>
+            <button class="quiet-button" id="backToOutline" type="button">Back to outline</button>
+          </div>
+          <article class="draft-content" id="draftContent"></article>
+          <div class="result-actions">
+            <button class="secondary-button" id="copyDraft" type="button">Copy as Markdown</button>
+            <button class="primary-button" id="startOver" type="button">Start a new post <span>↗</span></button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer>Draftly is a local prototype. Your work stays in this browser.</footer>
+    <script src="./app.js"></script>
+  </body>
+</html>
